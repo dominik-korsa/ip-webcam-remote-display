@@ -1,4 +1,5 @@
 @import "https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css";
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
 
 :root {
 	--mdc-theme-primary: #2196f3;
@@ -60,6 +61,16 @@ body {
 	width: 100vw;
 	filter: drop-shadow(0px 8px 10px rgba(0, 0, 0, 0.2)) drop-shadow(0px 16px 24px rgba(0, 0, 0, 0.14)) drop-shadow(0px 6px 30px rgba(0, 0, 0, 0.12));
 	
+	&:not(.active) {
+		display: none;
+	}
+}
+
+#fullscreen {
+	position: fixed;
+	bottom: 32px;
+	right: 32px;
+
 	&:not(.active) {
 		display: none;
 	}

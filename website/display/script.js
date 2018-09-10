@@ -1,9 +1,11 @@
 var connection;
 var video;
+var fullscreen;
 
 document.addEventListener("DOMContentLoaded", () => {
 	connection = document.getElementById("connection");
 	video = document.getElementById("video");
+	fullscreen = document.getElementById("fullscreen");
 
 	window.mdc.autoInit();
 
@@ -53,3 +55,16 @@ function formValidateIP(event) {
 		this.setCustomValidity("");
 	}
 }
+
+function goBigOrGoHome() {
+	document.documentElement.requestFullscreen();
+}
+
+document.addEventListener("fullscreenchange", function (event) {
+	if (document.fullscreenElement !== null) {
+		fullscreen.classList.remove("active");
+	}
+	else {
+		fullscreen.classList.add("active");
+	}
+});
