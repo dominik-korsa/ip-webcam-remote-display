@@ -6,17 +6,30 @@
 	<title>IP Webcam Remote Display</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+	<script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
 	<script src="script.js"></script>
 </head>
 <body>
 	<form id="connection" class="">
-		<select class="protocol" required>
-			<option value="http">HTTP</option>
-			<option value="https">HTTPS</option>
-		</select>
-		<input class="ip" type="text" placeholder="255.255.255.255" required>
-		<input class="port" type="number" value="5432" required>
-		<button type="submit">Connect</button>
+		<div class="mdc-select mdc-select--box" data-mdc-auto-init="MDCSelect">
+			<select id="protocol" class="mdc-select__native-control" required>
+				<option value="http">HTTP</option>
+				<option value="https">HTTPS</option>
+			</select>
+			<label class="mdc-floating-label">Protokół</label>
+			<div class="mdc-line-ripple"></div>
+		</div>
+		<div class="mdc-text-field" data-mdc-auto-init="MDCTextField">
+			<input id="ip" class="mdc-text-field__input" type="text" required>
+			<label class="mdc-floating-label" for="ip">Adres IP</label>
+			<div class="mdc-line-ripple"></div>
+		</div>
+		<div class="mdc-text-field" data-mdc-auto-init="MDCTextField">
+			<input id="port" class="mdc-text-field__input" type="number" value="5432" required>
+			<label class="mdc-floating-label mdc-floating-label--float-above" for="port">Port</label>
+			<div class="mdc-line-ripple"></div>
+		</div>
+		<button id="connect" type="submit" class="mdc-button mdc-button--raised">Połącz</button>
 	</form>
 	<image id="video"></image>
 </body>

@@ -5,12 +5,16 @@ document.addEventListener("DOMContentLoaded", () => {
 	connection = document.getElementById("connection");
 	video = document.getElementById("video");
 
-	connection.getElementsByClassName("ip")[0].addEventListener("input", formValidateIP);
+	window.mdc.autoInit();
+
+	document.getElementById("ip").addEventListener("input", formValidateIP);
 
 	connection.addEventListener("submit", (e) => {
 		e.preventDefault();
 		connect();
 	});
+
+	video.addEventListener("error", connectError);
 
 	connection.classList.add("active");
 });
@@ -18,18 +22,25 @@ document.addEventListener("DOMContentLoaded", () => {
 function connect() {
 	connection.classList.remove("active");
 	video.classList.add("active");
-	var src = connection.getElementsByClassName("protocol")[0].value
+	var src = document.getElementById("protocol").value
 		+ "://"
-		+ connection.getElementsByClassName("ip")[0].value
+		+ document.getElementById("ip").value
 		+ ":"
-		+ connection.getElementsByClassName("port")[0].value
+		+ document.getElementById("port").value
 		+ "/video";
 	console.log(src);
 	video.src = src;
 }
 
+function connectError(error) {
+	console.warn("Connection error", error);
+	video.classList.remove("active");
+	alert("Błąd połączenia");
+	connection.classList.add("active");
+}
+
 function formValidateIP(event) {
-	var regex = /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
+	var regex = /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$|^localhost$/;
 	if (!this.validity.valueMissing) {
 		if (regex.test(this.value)) {
 			this.setCustomValidity("");
