@@ -9,6 +9,15 @@
 	<script src="script.js"></script>
 </head>
 <body>
-
+	<form id="connection" class="">
+		<select class="protocol" required>
+			<option value="http">HTTP</option>
+			<option value="https">HTTPS</option>
+		</select>
+		<input class="ip" type="text" placeholder="255.255.255.255" required>
+		<input class="port" type="number" value="5432" required>
+		<button type="submit">Connect</button>
+	</form>
+	<image id="video"></image>
 </body>
 </html>
