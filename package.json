@@ -1,0 +1,11 @@
+{
+	"name": "ip-webcam-remote-display",
+	"version": "1.0.0",
+	"description": "Custom display for the IP Webcam app for android.",
+	"scripts": {
+		"sass": "sass src:website --no-source-map",
+		"sass-watch": "sass src:website --no-source-map --watch"
+	},
+	"author": "Dominik Korsa",
+	"license": "MIT"
+}
