@@ -1,0 +1,53 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto+Mono:100,100i,300,300i,400,400i,500,500i,700,700i|Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i");
+body {
+  background-color: #111;
+  margin: 0;
+}
+
+#container {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  flex-direction: column;
+  height: 500px;
+  width: 400px;
+  max-width: calc(100vw - 50px);
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: calc(50vh - 250px);
+}
+@media screen and (max-height: 550px) {
+  #container {
+    height: calc(100vh - 50px);
+    margin-top: 25px;
+  }
+}
+#container .link {
+  background-color: #CCC;
+  display: flex;
+  text-decoration: none;
+  color: #333;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-size: 35px;
+  padding: 25px 25px;
+  border-radius: 5px;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+  flex-grow: 1;
+  transition: flex-grow 500ms;
+}
+#container .link:hover {
+  flex-grow: 3;
+}
+#container .link.work-in-progress {
+  background-color: #777;
+  color: #AAA;
+  box-shadow: none;
+  cursor: pointer;
+}
+#container .link:not(:last-of-type) {
+  margin-bottom: 20px;
+}
