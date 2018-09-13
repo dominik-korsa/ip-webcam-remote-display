@@ -37,7 +37,7 @@ function connect() {
 function connectError(error) {
 	console.warn("Connection error", error);
 	video.classList.remove("active");
-	alert("Błąd połączenia");
+	alert("Connection error");
 	connection.classList.add("active");
 }
 
@@ -48,7 +48,7 @@ function formValidateIP(event) {
 			this.setCustomValidity("");
 		}
 		else {
-			this.setCustomValidity("Podaj poprawny adres IP.");
+			this.setCustomValidity("Enter correct IP adress.");
 		}
 	}
 	else {
