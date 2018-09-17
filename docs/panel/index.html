@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>IP Webcam Remote Control Panel</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+	<script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+	<script src="script.js"></script>
+</head>
+<body>
+	<form id="connection" class="">
+		<div class="mdc-select mdc-select--box" data-mdc-auto-init="MDCSelect">
+			<select id="protocol" class="mdc-select__native-control" required>
+				<option value="http">HTTP</option>
+				<option value="https">HTTPS</option>
+			</select>
+			<label class="mdc-floating-label">Protocol</label>
+			<div class="mdc-line-ripple"></div>
+		</div>
+		<div class="mdc-text-field" data-mdc-auto-init="MDCTextField">
+			<input id="ip" class="mdc-text-field__input" type="text" required>
+			<label class="mdc-floating-label" for="ip">IP adress</label>
+			<div class="mdc-line-ripple"></div>
+		</div>
+		<div class="mdc-text-field" data-mdc-auto-init="MDCTextField">
+			<input id="port" class="mdc-text-field__input" type="number" value="5432" required>
+			<label class="mdc-floating-label mdc-floating-label--float-above" for="port">Port</label>
+			<div class="mdc-line-ripple"></div>
+		</div>
+		<button id="connect" type="submit" class="mdc-button mdc-button--raised">Connect</button>
+	</form>
+	<div id="container" class="">
+		<div class="mdc-slider mdc-slider--discrete" id="quality" tabindex="0" role="slider" aria-valuemin="5" aria-valuemax="100"
+		 aria-valuenow="50" data-step="5" aria-label="Select Quality">
+			<div class="mdc-slider__track-container">
+				<div class="mdc-slider__track"></div>
+			</div>
+			<div class="mdc-slider__thumb-container">
+				<div class="mdc-slider__pin">
+					<span class="mdc-slider__pin-value-marker"></span>
+				</div>
+				<svg class="mdc-slider__thumb" width="21" height="21">
+					<circle cx="10.5" cy="10.5" r="7.875"></circle>
+				</svg>
+				<div class="mdc-slider__focus-ring"></div>
+			</div>
+		</div>
+	</div>
+	<div class="mdc-snackbar" aria-live="assertive" aria-atomic="true" aria-hidden="true" data-mdc-auto-init="MDCSnackbar">
+		<div class="mdc-snackbar__text"></div>
+		<div class="mdc-snackbar__action-wrapper">
+			<button type="button" class="mdc-snackbar__action-button"></button>
+		</div>
+	</div>
+</body>
+</html>
