@@ -57,14 +57,54 @@ function formValidateIP(event) {
 }
 
 function goBigOrGoHome() {
-	document.documentElement.requestFullscreen();
+	var docElm = document.documentElement;
+
+	if (docElm.requestFullscreen) {
+		docElm.requestFullscreen();
+	}
+	else if (docElm.mozRequestFullScreen) {
+		docElm.mozRequestFullScreen();
+	}
+	else if (docElm.webkitRequestFullScreen) {
+		docElm.webkitRequestFullScreen();
+	}
+	else if (docElm.msRequestFullscreen) {
+		docElm.msRequestFullscreen();
+	}
 }
 
-document.addEventListener("fullscreenchange", function (event) {
-	if (document.fullscreenElement !== null) {
+document.addEventListener("fullscreenchange", function () {
+	if (document.fullscreen) {
 		fullscreen.classList.remove("active");
 	}
 	else {
 		fullscreen.classList.add("active");
 	}
-});
+}, false);
+
+document.addEventListener("mozfullscreenchange", function () {
+	if (document.mozFullScreen) {
+		fullscreen.classList.remove("active");
+	}
+	else {
+		fullscreen.classList.add("active");
+	}
+}, false);
+
+document.addEventListener("webkitfullscreenchange", function () {
+	if (document.webkitIsFullScreen) {
+		fullscreen.classList.remove("active");
+	}
+	else {
+		fullscreen.classList.add("active");
+	}
+}, false);
+
+document.addEventListener("msfullscreenchange", function () {
+	if (document.msFullscreenElement) {
+		fullscreen.classList.remove("active");
+	}
+	else {
+		fullscreen.classList.add("active");
+	}
+}, false);
