@@ -40,6 +40,7 @@ body {
 	width: fit-content;
 	min-width: 250px;
 	font-family: "Roboto", sans-serif;
+	text-align: center;
 
 	&:not(.active) {
 		display: none;

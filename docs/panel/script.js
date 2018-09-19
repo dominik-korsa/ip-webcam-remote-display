@@ -2,6 +2,7 @@ var connection;
 var container;
 var snackbar;
 var qualitySlider;
+var resolutionSelect;
 
 var adress;
 
@@ -10,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	container = document.getElementById("container");
 	snackbar = new mdc.snackbar.MDCSnackbar(document.querySelector('.mdc-snackbar'));
 	qualitySlider = new mdc.slider.MDCSlider(document.querySelector('#quality'));
+	resolutionSelect = new mdc.select.MDCSelect(document.querySelector("#resolution").parentElement);
 
 	window.mdc.autoInit();
 
@@ -67,8 +69,19 @@ function connect() {
 					sendRequest("settings/quality?set=" + qualitySlider.value);
 				});
 
+				response.avail.video_size.forEach(resolution => {
+					var optionElement = new Option(resolution, resolution);
+					document.querySelector("#resolution").add(optionElement);
+				});
+
+				resolutionSelect.value = response.curvals.video_size;
+				resolutionSelect.listen('change', () => {
+					sendRequest("settings/video_size?set=" + resolutionSelect.value);
+				});
+
 				container.classList.add("active");
 				qualitySlider.layout();
+				resolutionSelect.layout();
 			}
 			else {
 				console.warn("Connection error");
@@ -93,7 +106,8 @@ function updateStatus() {
 				var response = JSON.parse(httpRequest.responseText);
 				console.log(response);
 
-				qualitySlider.value = response.curvals.quality;
+				if (response.curvals.quality) qualitySlider.value = response.curvals.quality;
+				if (response.curvals.video_size) resolutionSelect.value = response.curvals.video_size;
 			}
 			else {
 				console.warn("Connection error");

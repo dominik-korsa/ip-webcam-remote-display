@@ -32,8 +32,7 @@
 		<button id="connect" type="submit" class="mdc-button mdc-button--raised">Connect</button>
 	</form>
 	<div id="container" class="">
-		<div class="mdc-slider mdc-slider--discrete" id="quality" tabindex="0" role="slider" aria-valuemin="5" aria-valuemax="100"
-		 aria-valuenow="50" data-step="5" aria-label="Select Quality">
+		<div class="mdc-slider mdc-slider--discrete" id="quality" tabindex="0" role="slider" aria-valuemin="5" aria-valuemax="100" aria-valuenow="50" data-step="5" aria-label="Select Quality">
 			<div class="mdc-slider__track-container">
 				<div class="mdc-slider__track"></div>
 			</div>
@@ -46,6 +45,11 @@
 				</svg>
 				<div class="mdc-slider__focus-ring"></div>
 			</div>
+		</div>
+		<div class="mdc-select mdc-select--box">
+			<select id="resolution" class="mdc-select__native-control"></select>
+			<label class="mdc-floating-label">Resolution</label>
+			<div class="mdc-line-ripple"></div>
 		</div>
 	</div>
 	<div class="mdc-snackbar" aria-live="assertive" aria-atomic="true" aria-hidden="true" data-mdc-auto-init="MDCSnackbar">
