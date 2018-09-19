@@ -69,8 +69,14 @@ function connect() {
 					sendRequest("settings/quality?set=" + qualitySlider.value);
 				});
 
-				response.avail.video_size.forEach(resolution => {
-					var optionElement = new Option(resolution, resolution);
+				var resolutions = response.avail.video_size.sort((a, b) => {
+					aVert = a.split("x")[1];
+					bVert = b.split("x")[1];
+					return bVert - aVert;
+				});
+				resolutions.forEach(resolution => {
+					var text = resolution.split("x")[0] + " x " + resolution.split("x")[1];
+					var optionElement = new Option(text, resolution);
 					document.querySelector("#resolution").add(optionElement);
 				});
 
@@ -92,7 +98,6 @@ function connect() {
 		}
 	};
 
-	httpRequest.timeout = 5000;
 	httpRequest.open('GET', adress + "/status.json?show_avail=1", true);
 	httpRequest.send();
 }
@@ -117,7 +122,6 @@ function updateStatus() {
 		}
 	};
 
-	httpRequest.timeout = 2000;
 	httpRequest.open('GET', adress + "/status.json", true);
 	httpRequest.send();
 }
@@ -138,7 +142,6 @@ function sendRequest(page) {
 		}
 	};
 
-	httpRequest.timeout = 2000;
 	httpRequest.open('GET', adress + "/" + page, true);
 	httpRequest.send();
 }
