@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	connection = document.getElementById("connection");
 	container = document.getElementById("container");
 	snackbar = new mdc.snackbar.MDCSnackbar(document.querySelector('.mdc-snackbar'));
+	qualitySlider = new mdc.slider.MDCSlider(document.querySelector('#quality'));
 
 	window.mdc.autoInit();
 
@@ -61,13 +62,13 @@ function connect() {
 				snackbar.show({ message: "Connected" });
 				setInterval(updateStatus, 5000);
 
-				container.classList.add("active");
-
-				qualitySlider = new mdc.slider.MDCSlider(document.querySelector('#quality'));
 				qualitySlider.value = response.curvals.quality;
 				qualitySlider.listen('MDCSlider:change', () => {
 					sendRequest("settings/quality?set=" + qualitySlider.value);
 				});
+
+				container.classList.add("active");
+				qualitySlider.layout();
 			}
 			else {
 				console.warn("Connection error");
