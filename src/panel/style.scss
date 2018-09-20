@@ -62,11 +62,12 @@ body {
 	font-family: "Roboto", sans-serif;
 	text-align: center;
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	grid-template-columns: repeat(5, auto);
 	grid-auto-rows: auto;
 	grid-template-areas:
 		"quality quality quality quality quality"
-		"resolution resolution flashlight camera overlay";
+		"resolution flashlight camera overlay focus";
+	grid-gap: 5px;
 	align-items: center;
 	justify-items: center;
 	margin-top: 75px;
@@ -94,6 +95,10 @@ body {
 	#overlay {
 		grid-area: overlay;
 	}
+
+	#foucs {
+		grid-area: focus;
+	}
 }
 
 .mdc-icon-button-color.mdc-icon-button--on {
@@ -109,12 +114,12 @@ body {
 	}
 }
 
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 400px) {
 	#container {
-		grid-template-columns: 1fr 1fr 1fr;
+		grid-template-columns: repeat(4, auto);
 		grid-template-areas:
-			"quality quality quality"
-			"resolution resolution resolution"
-			"flashlight camera overlay";
+			"quality quality quality quality"
+			"resolution resolution resolution resolution"
+			"flashlight camera overlay focus";
 	}
 }

@@ -1,4 +1,4 @@
-var connection, container, snackbar, qualitySlider, resolutionSelect, flashlight, camera, overlay;
+var connection, container, snackbar, qualitySlider, resolutionSelect, flashlight, camera, overlay, focus;
 
 var adress;
 
@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	flashlight = new mdc.iconButton.MDCIconButtonToggle(document.querySelector("#flashlight"));
 	camera = new mdc.iconButton.MDCIconButtonToggle(document.querySelector("#camera"));
 	overlay = new mdc.iconButton.MDCIconButtonToggle(document.querySelector("#overlay"));
+	focus = new mdc.iconButton.MDCIconButtonToggle(document.querySelector("#focus"));
 
 	window.mdc.autoInit();
 
@@ -99,6 +100,11 @@ function connect() {
 					sendRequest("settings/overlay?set=" + (overlay.on ? "on" : "off"));
 				})
 
+				focus.on = response.curvals.focus == "on";
+				focus.listen("MDCIconButtonToggle:change", () => {
+					sendRequest(focus.on ? "focus" : "nofocus");
+				})
+
 				container.classList.add("active");
 				qualitySlider.layout();
 				resolutionSelect.layout();
@@ -130,6 +136,7 @@ function updateStatus() {
 				if (response.curvals.flashmode) flashlight.on = response.curvals.flashmode == "torch";
 				if (response.curvals.ffc) camera.on = response.curvals.ffc == "on";
 				if (response.curvals.overlay) overlay.on = response.curvals.overlay == "on";
+				if (response.curvals.focus) focus.on = response.curvals.focus == "on";
 			}
 			else {
 				console.warn("Connection error");
