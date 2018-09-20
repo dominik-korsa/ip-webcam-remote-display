@@ -1,4 +1,4 @@
-var connection, container, snackbar, qualitySlider, resolutionSelect, flashlight, camera, overlay, focus;
+var connection, container, snackbar, qualitySlider, resolutionSelect, orientationSelect, flashlight, camera, overlay, focus;
 
 var adress;
 
@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	snackbar = new mdc.snackbar.MDCSnackbar(document.querySelector('.mdc-snackbar'));
 	qualitySlider = new mdc.slider.MDCSlider(document.querySelector('#quality'));
 	resolutionSelect = new mdc.select.MDCSelect(document.querySelector("#resolution").parentElement);
+	orientationSelect = new mdc.select.MDCSelect(document.querySelector("#orientation").parentElement);
 	flashlight = new mdc.iconButton.MDCIconButtonToggle(document.querySelector("#flashlight"));
 	camera = new mdc.iconButton.MDCIconButtonToggle(document.querySelector("#camera"));
 	overlay = new mdc.iconButton.MDCIconButtonToggle(document.querySelector("#overlay"));
@@ -85,6 +86,11 @@ function connect() {
 					sendRequest("settings/video_size?set=" + resolutionSelect.value);
 				});
 
+				orientationSelect.value = response.curvals.orientation;
+				orientationSelect.listen('change', () => {
+					sendRequest("settings/orientation?set=" + orientationSelect.value);
+				});
+
 				flashlight.on = response.curvals.flashmode == "torch";
 				flashlight.listen("MDCIconButtonToggle:change", () => {
 					sendRequest(flashlight.on ? "enabletorch" : "disabletorch");
@@ -108,6 +114,7 @@ function connect() {
 				container.classList.add("active");
 				qualitySlider.layout();
 				resolutionSelect.layout();
+				orientationSelect.layout();
 			}
 			else {
 				console.warn("Connection error");
@@ -133,6 +140,7 @@ function updateStatus() {
 
 				if (response.curvals.quality) qualitySlider.value = response.curvals.quality;
 				if (response.curvals.video_size) resolutionSelect.value = response.curvals.video_size;
+				if (response.curvals.orientation) orientationSelect.value = response.curvals.orientation;
 				if (response.curvals.flashmode) flashlight.on = response.curvals.flashmode == "torch";
 				if (response.curvals.ffc) camera.on = response.curvals.ffc == "on";
 				if (response.curvals.overlay) overlay.on = response.curvals.overlay == "on";
