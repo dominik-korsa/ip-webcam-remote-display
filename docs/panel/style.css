@@ -82,7 +82,7 @@ body {
 #container #overlay {
   grid-area: overlay;
 }
-#container #foucs {
+#container #focus {
   grid-area: focus;
 }
 
