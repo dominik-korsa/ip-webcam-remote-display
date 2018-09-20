@@ -1,11 +1,4 @@
-var connection;
-var container;
-var snackbar;
-var qualitySlider;
-var resolutionSelect;
-var flashlight;
-var camera;
-var overlay;
+var connection, container, snackbar, qualitySlider, resolutionSelect, flashlight, camera, overlay;
 
 var adress;
 
