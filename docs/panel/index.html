@@ -46,11 +46,23 @@
 				<div class="mdc-slider__focus-ring"></div>
 			</div>
 		</div>
-		<div class="mdc-select mdc-select--box">
+		<div class="mdc-select mdc-select--box" id="resolutionWrapper">
 			<select id="resolution" class="mdc-select__native-control"></select>
 			<label class="mdc-floating-label">Resolution</label>
 			<div class="mdc-line-ripple"></div>
 		</div>
+		<button id="flashlight" class="mdc-icon-button mdc-icon-button-color" aria-label="Flashlight" aria-hidden="true" aria-pressed="false">
+			<i class="material-icons mdc-icon-button__icon mdc-icon-button__icon--on">flash_on</i>
+			<i class="material-icons mdc-icon-button__icon">flash_off</i>
+		</button>
+		<button id="camera" class="mdc-icon-button" aria-label="Camera" aria-hidden="true" aria-pressed="false">
+			<i class="material-icons mdc-icon-button__icon mdc-icon-button__icon--on">camera_front</i>
+			<i class="material-icons mdc-icon-button__icon">camera_rear</i>
+		</button>
+		<button id="overlay" class="mdc-icon-button mdc-icon-button-color" aria-label="Overlay" aria-hidden="true" aria-pressed="false">
+			<i class="material-icons mdc-icon-button__icon mdc-icon-button__icon--on">info</i>
+			<i class="material-icons mdc-icon-button__icon">info</i>
+		</button>
 	</div>
 	<div class="mdc-snackbar" aria-live="assertive" aria-atomic="true" aria-hidden="true" data-mdc-auto-init="MDCSnackbar">
 		<div class="mdc-snackbar__text"></div>

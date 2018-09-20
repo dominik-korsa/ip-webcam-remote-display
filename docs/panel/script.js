@@ -3,6 +3,9 @@ var container;
 var snackbar;
 var qualitySlider;
 var resolutionSelect;
+var flashlight;
+var camera;
+var overlay;
 
 var adress;
 
@@ -12,6 +15,9 @@ document.addEventListener("DOMContentLoaded", () => {
 	snackbar = new mdc.snackbar.MDCSnackbar(document.querySelector('.mdc-snackbar'));
 	qualitySlider = new mdc.slider.MDCSlider(document.querySelector('#quality'));
 	resolutionSelect = new mdc.select.MDCSelect(document.querySelector("#resolution").parentElement);
+	flashlight = new mdc.iconButton.MDCIconButtonToggle(document.querySelector("#flashlight"));
+	camera = new mdc.iconButton.MDCIconButtonToggle(document.querySelector("#camera"));
+	overlay = new mdc.iconButton.MDCIconButtonToggle(document.querySelector("#overlay"));
 
 	window.mdc.autoInit();
 
@@ -85,6 +91,21 @@ function connect() {
 					sendRequest("settings/video_size?set=" + resolutionSelect.value);
 				});
 
+				flashlight.on = response.curvals.flashmode == "torch";
+				flashlight.listen("MDCIconButtonToggle:change", () => {
+					sendRequest(flashlight.on ? "enabletorch" : "disabletorch");
+				});
+
+				camera.on = response.curvals.ffc == "on";
+				camera.listen("MDCIconButtonToggle:change", () => {
+					sendRequest("settings/ffc?set=" + (camera.on ? "on" : "off"));
+				});
+
+				overlay.on = response.curvals.overlay == "on";
+				overlay.listen("MDCIconButtonToggle:change", () => {
+					sendRequest("settings/overlay?set=" + (overlay.on ? "on" : "off"));
+				})
+
 				container.classList.add("active");
 				qualitySlider.layout();
 				resolutionSelect.layout();
@@ -113,6 +134,9 @@ function updateStatus() {
 
 				if (response.curvals.quality) qualitySlider.value = response.curvals.quality;
 				if (response.curvals.video_size) resolutionSelect.value = response.curvals.video_size;
+				if (response.curvals.flashmode) flashlight.on = response.curvals.flashmode == "torch";
+				if (response.curvals.ffc) camera.on = response.curvals.ffc == "on";
+				if (response.curvals.overlay) overlay.on = response.curvals.overlay == "on";
 			}
 			else {
 				console.warn("Connection error");

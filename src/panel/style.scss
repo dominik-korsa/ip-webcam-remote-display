@@ -41,8 +41,27 @@ body {
 	min-width: 250px;
 	font-family: "Roboto", sans-serif;
 	text-align: center;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	grid-auto-rows: auto;
+	align-items: center;
+	justify-items: center;
 
 	&:not(.active) {
 		display: none;
 	}
+
+	#quality {
+		grid-row: 1;
+		grid-column: 1/6;
+	}
+
+	#resolutionWrapper {
+		grid-column: 1/3;
+		grid-row: 2;
+	}
+}
+
+.mdc-icon-button-color.mdc-icon-button--on {
+	color: var(--mdc-theme-secondary);
 }
