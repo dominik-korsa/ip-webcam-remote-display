@@ -113,6 +113,21 @@ body {
 	color: var(--mdc-theme-secondary);
 }
 
+.mdc-slider {
+	text-align: left;
+
+	label {
+		color: rgba(0,0,0,0.6);
+		font-family: Roboto, sans-serif;
+		-moz-osx-font-smoothing: grayscale;
+		-webkit-font-smoothing: antialiased;
+		font-size: 0.75rem;
+		font-weight: 400;
+		letter-spacing: 0.0070275em;
+		margin-left: 8px;
+	}
+}
+
 @media screen and (max-width: 500px) {
 	#container {
 		border-radius: 0;
