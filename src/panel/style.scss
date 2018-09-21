@@ -1,0 +1,138 @@
+@import "https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css";
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+
+:root {
+	--mdc-theme-primary: #2196f3;
+}
+
+body {
+	background-color: #111;
+	margin: 0;
+}
+
+#connection {
+	margin-left: auto;
+	margin-right: auto;
+	width: fit-content;
+	margin-top: calc(50vh - 44px);
+	background-color: #CCC;
+	padding: 16px;
+	border-radius: 5px;
+	box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+	text-align: center;
+	
+	#connect {
+		margin-left: 8px;
+		vertical-align: super;
+	}
+	
+	&:not(.active) {
+		display: none;
+	}
+}
+
+@media screen and (max-width: 700px) {
+	#connection {
+		border-radius: 0;
+		box-sizing: border-box;
+		width: 100%;
+		height: 100%;
+		margin: 0;
+
+		.mdc-select, .mdc-text-field {
+			display: block;
+			margin-top: 25px;
+		}
+
+		#connect {
+			margin-top: 25px;
+		}
+	}
+}
+
+#container {
+	background-color: #CCC;
+	padding: 16px 32px;
+	border-radius: 5px;
+	box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+	margin-left: auto;
+	margin-right: auto;
+	width: fit-content;
+	min-width: 250px;
+	font-family: "Roboto", sans-serif;
+	text-align: center;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-auto-rows: auto;
+	grid-template-areas:
+		"quality quality quality quality"
+		"resolution resolution resolution resolution"
+		"orientation orientation orientation orientation"
+		"flashlight camera overlay focus";
+	grid-gap: 5px;
+	align-items: center;
+	justify-items: center;
+	margin-top: 75px;
+
+	&:not(.active) {
+		display: none;
+	}
+
+	#quality {
+		grid-area: quality;
+	}
+
+	#resolutionWrapper {
+		grid-area: resolution;
+		justify-self: stretch;
+	}
+
+	#orientationWrapper {
+		grid-area: orientation;
+		justify-self: stretch;
+	}
+
+	#flashlight {
+		grid-area: flashlight;
+	}
+
+	#camera {
+		grid-area: camera;
+	}
+
+	#overlay {
+		grid-area: overlay;
+	}
+
+	#focus {
+		grid-area: focus;
+	}
+}
+
+.mdc-icon-button-color.mdc-icon-button--on {
+	color: var(--mdc-theme-secondary);
+}
+
+.mdc-slider {
+	text-align: left;
+
+	label {
+		color: rgba(0,0,0,0.6);
+		font-family: Roboto, sans-serif;
+		-moz-osx-font-smoothing: grayscale;
+		-webkit-font-smoothing: antialiased;
+		font-size: 0.75rem;
+		font-weight: 400;
+		letter-spacing: 0.0070275em;
+		margin-left: 8px;
+	}
+}
+
+@media screen and (max-width: 500px) {
+	#container {
+		border-radius: 0;
+		margin: 0;
+		box-sizing: border-box;
+		width: 100%;
+	}
+}
