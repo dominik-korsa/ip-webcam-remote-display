@@ -13,7 +13,7 @@
 <body>
 	<form id="connection" class="">
 		<div class="mdc-select mdc-select--box" data-mdc-auto-init="MDCSelect">
-			<select id="protocol" class="mdc-select__native-control" required>
+			<select id="protocol" class="mdc-select__native-control" required aria-label="Connection protocol">
 				<option value="http">HTTP</option>
 				<option value="https">HTTPS</option>
 			</select>
@@ -21,12 +21,12 @@
 			<div class="mdc-line-ripple"></div>
 		</div>
 		<div class="mdc-text-field" data-mdc-auto-init="MDCTextField">
-			<input id="ip" class="mdc-text-field__input" type="text" required>
+			<input id="ip" class="mdc-text-field__input" type="text" required aria-label="Connection IP adress">
 			<label class="mdc-floating-label" for="ip">IP adress</label>
 			<div class="mdc-line-ripple"></div>
 		</div>
 		<div class="mdc-text-field" data-mdc-auto-init="MDCTextField">
-			<input id="port" class="mdc-text-field__input" type="number" value="8080" required>
+			<input id="port" class="mdc-text-field__input" type="number" value="8080" required  aria-label="Connection port">
 			<label class="mdc-floating-label mdc-floating-label--float-above" for="port">Port</label>
 			<div class="mdc-line-ripple"></div>
 		</div>
