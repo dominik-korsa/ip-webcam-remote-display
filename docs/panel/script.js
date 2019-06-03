@@ -62,7 +62,8 @@ function connect() {
 				var response = JSON.parse(httpRequest.responseText);
 				console.log(response);
 
-				snackbar.show({ message: "Connected" });
+				snackbar.labelText = 'Connected';
+				snackbar.open();
 				setInterval(updateStatus, 5000);
 
 				qualitySlider.value = response.curvals.quality;
@@ -120,7 +121,8 @@ function connect() {
 				console.warn("Connection error");
 				connection.classList.add("active");
 
-				snackbar.show({ message: "Connection error" });
+				snackbar.labelText = 'Connection error';
+				snackbar.open();
 			}
 		}
 	};
@@ -149,7 +151,8 @@ function updateStatus() {
 			else {
 				console.warn("Connection error");
 
-				snackbar.show({ message: "Connection error" });
+				snackbar.labelText = 'Connection error';
+				snackbar.open();
 			}
 		}
 	};
@@ -169,7 +172,8 @@ function sendRequest(page) {
 			else {
 				console.warn("Connection error");
 
-				snackbar.show({ message: "Connection error" });
+				snackbar.labelText = 'Connection error';
+				snackbar.open();
 			}
 		}
 	};
